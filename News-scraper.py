@@ -1,7 +1,7 @@
 import requests
 from fpdf import FPDF
 from win32com.client import Dispatch
-main_url = 'http://newsapi.org/v2/top-headlines?country=in&apiKey=3bcbfbed7065411ba7b0af38aff73e8c'
+main_url = 'http://newsapi.org/v2/top-headlines?country=in&apiKey=3bcbfbed7065411ba7b0af38aff73e8c' # Enter your API key
 open_bbc_page  = requests.get(main_url).json()
 articles =  open_bbc_page['articles']
 results =[]
@@ -22,18 +22,7 @@ for i in articles:
 	f1.writelines(description)
 	f1.writelines(url)
 	f1.writelines("\n")
-
 f1.close()
-
-pdf = FPDF()
-pdf.add_page()
-
-f = open("Desktop\\NEWS.txt","r")
-pdf.set_font("Arial", size = 15)
-for x in f:
-	pdf.cell(50,5,txt=x,ln=1,align="C")
-
-pdf.output("Desktop\\news.pdf")
 
 	
 
